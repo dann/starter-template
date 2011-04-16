@@ -128,9 +128,7 @@ sub gen_files {
 sub print_welcome_message {
     my $self = shift;
     my $template = get_data_section('__welcome_message');
-    printf($template, 
-        $self->get_project_name()
-    );
+    print "$template\n" 
 }
 
 sub gen_project_dir {

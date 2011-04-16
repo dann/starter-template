@@ -13,3 +13,7 @@ echo "#!/usr/bin/env perl"
 echo
 fatpack file
 cat "$1"
+
+rm fatpacker.trace
+rm fatpacker.packlists 
+rm -rf fatlib

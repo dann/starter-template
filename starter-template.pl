@@ -58,8 +58,9 @@ Options:
 
 use Data::Section::Simple qw(get_data_section);
 use File::Spec;
+use File::Basename;
+use File::Path;
 use IO::File;
-use Path::Class;
 
 our $VERSION = '0.01';
 
@@ -86,7 +87,7 @@ sub _mkdir {
 sub _mkfile {
     my ($self, $path, $content) = @_;
     unless (-e $path && -f _) {
-        file($path)->dir->mkpath;
+        File::Path::mkpath(dirname($path));
         my $fh = IO::File->new($path, "w")
             or die "Couldn't write file $path";
         $fh->print($content);
@@ -118,7 +119,7 @@ sub gen_files {
     my $all_files = get_data_section;
     foreach my $file_path (keys %{$all_files}) {
         next if $file_path =~ /^__/;
-        my $project_file_path = file($self->get_project_name(), $file_path);
+        my $project_file_path = $self->get_project_name() . "/" . $file_path;
         my $file_content = get_data_section($file_path); 
         $self->_mkfile($project_file_path, $file_content);
     }

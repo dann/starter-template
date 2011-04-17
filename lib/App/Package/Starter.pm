@@ -1,61 +1,7 @@
 #!/usr/bin/env perl
-
-eval 'exec /usr/bin/perl -w -S $0 ${1+"$@"}' if 0;
-
+package App::Package::Starter;
 use strict;
 use warnings;
-
-our $VERSION = '0.0.1';
-
-use Getopt::Long;
-use Pod::Usage;
-
-my $help = @ARGV == 0;
-my ($project);
-my %opt = (
-    'help|?'      => \$help,
-    'project|p=s' => \$project,
-);
-
-GetOptions(%opt);
-
-pod2usage(1) if $help;
-pod2usage(1) unless $project;
-
-my $starter = Package::Starter->new(
-    project_name => $project,
-);
-
-$starter->gen_package();
-
-package Package::Starter;
-
-
-=head1 NAME
-
-XXX - This program allows you to build XXX  package template easily
-
-=head1 SYNOPSIS
-
-    XXX [options]
-
-Example:
-
-    XXX --project MyProj
-
-Options:
-
-
-=head1 DESCRIPTION
-
-
-=head1 AUTHOR
-
-
-=head1 COPYRIGHT AND LICENSE
-
-=cut
-
 use Data::Section::Simple qw(get_data_section);
 use File::Spec;
 use File::Basename;

@@ -4,7 +4,7 @@
 Edit Data Section in lib/App/Package/Starter.pm
 
 ## BUILD 
-script/pack-pstart.sh
+script/pack-starter.sh
 
 ## How to use
 starter -project xxx
